@@ -37,7 +37,8 @@ public class ManageGenreForm extends JInternalFrame implements ActionListener{
 	JPanel titlePnl, btnPnl;
 	JLabel lblType;
 	JPanel jp;
-	  
+	
+	//constructor
 	public ManageGenreForm() {
 		setSize(340, 335);
 		setLocation(225, 10);
@@ -60,25 +61,7 @@ public class ManageGenreForm extends JInternalFrame implements ActionListener{
 		btnPnl.add(create);
 		close.addActionListener(this);
 		btnPnl.add(close);
-		create.addActionListener(new ActionListener() {   
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String type = JOptionPane.showInputDialog(null, "Insert Type");
-				if(type != null ) {
-					if( type.equals("") == false && genreHandler.getByType(type) == null) {
-						
-						HashMap<String,String> inputs = new HashMap<String,String>();
-						inputs.put("type", type);
-						genreHandler.insert(inputs);
-						JOptionPane.showMessageDialog(null, "Insert Genre Success!!");
-						refreshTable();				
-						
-					}else {
-						JOptionPane.showMessageDialog(null, "Insert Genre Failed!!");						
-					}
-				}
-			}
-		 });
+		create.addActionListener(this);
 
 		
 		jp = new JPanel(new GridLayout(2,2));
@@ -92,12 +75,22 @@ public class ManageGenreForm extends JInternalFrame implements ActionListener{
 		getContentPane().add(btnPnl, BorderLayout.SOUTH);
 
 	}
-	   
+	 
+	/**
+	 * This method is used to refresh Table view
+	 */
 	public void refreshTable() {
 		tableModel.setRowCount(0);
 		showGenre();
 	}
 	
+	
+	/**
+	 * This method is used to get genre data from controller 
+	 *  then show the genre list to the table
+	 *  
+	 * @see GenreHandler
+	 */
 	public void showGenre() {
 		genreList = genreHandler.getAll();
 		int size = genreList.size();
@@ -117,6 +110,21 @@ public class ManageGenreForm extends JInternalFrame implements ActionListener{
 	   // TODO Auto-generated method stub
 		if(e.getSource() == close) {
 			setVisible(false);
+		}if(e.getSource() == create) {
+			String type = JOptionPane.showInputDialog(null, "Insert Type");
+			if(type != null ) {
+				if( type.equals("") == false && genreHandler.getByType(type) == null) {
+					
+					HashMap<String,String> inputs = new HashMap<String,String>();
+					inputs.put("type", type);
+					genreHandler.insert(inputs);
+					JOptionPane.showMessageDialog(null, "Insert Genre Success!!");
+					refreshTable();				
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "Insert Genre Failed!!");						
+				}
+			}
 		}
 	}
 	

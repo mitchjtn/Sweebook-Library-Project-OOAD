@@ -43,14 +43,18 @@ public class Genre {
 	}
 	public void setType(String type) {
 		this.type = type;
+		
 	}
 	
 	//function 
 	
+	/**
+	 * This method is used to get all Genre List from database
+	 * @return	a list of genre
+	 */
 	public List<Genre> all(){
 		Connection connection = Connect.connect();
 		List<Genre> genres = new ArrayList<Genre>();
-		
 		try {
 			Statement st = connection.createStatement();
 			ResultSet rs = st.executeQuery(selectString);
@@ -68,6 +72,13 @@ public class Genre {
 		return genres;
 	}
 	
+	/**
+	 * Insert genre from this genre to database
+	 * Id and Type from this genre must not be null
+	 * 
+	 * @return this genre
+	 * @throws Exception in case id or type is null
+	 */
 	public Genre insert() {
 		Connection connection = Connect.connect();
 		PreparedStatement statement = null;
@@ -87,10 +98,19 @@ public class Genre {
 				ex.printStackTrace();
 			}
 		}
-		
 		return this;
 	}
 	
+	/**
+	 * This method is used to find a Genre from database by type. <br>
+	 * If there is no Genre with the same type
+	 * in database it will return null
+	 * 
+	 * @param type (String)
+	 * @return <b>Genre</b> if genre found <br>
+	 * 		   <b>Null</b> if genre not found
+	 *
+	 */
 	public Genre getByType(String type) {
 		Connection connection = Connect.connect();
 		PreparedStatement statement = null;
@@ -103,7 +123,8 @@ public class Genre {
 			if(rs.next()) {
 				genre.setId(rs.getString("id"));
 				genre.setType(rs.getString("type"));				
-			}
+			}else 
+				genre = null;
 			
 		}catch (SQLException ex) {
 			ex.printStackTrace();
@@ -117,7 +138,18 @@ public class Genre {
 		
 		return genre;
 	}
-	
+
+
+	/**
+	 * This method is used to find a Genre from database by id. <br>
+	 * If there is no Genre with the same id
+	 * in database it will return null
+	 * 
+	 * @param type (String)
+	 * @return <b>Genre</b> if genre found <br>
+	 * 		   <b>Null</b> if genre not found
+	 *
+	 */
 	public Genre find(String id) {
 		Connection connection = Connect.connect();
 		PreparedStatement statement = null;
