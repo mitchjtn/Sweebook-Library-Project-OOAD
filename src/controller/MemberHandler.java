@@ -42,8 +42,11 @@ public class MemberHandler {
 		inputs.put("roleId", roleId);
 		
 		//insert ke user
+		if(new UserHandler().insert(inputs) == null) {
+			JOptionPane.showMessageDialog(null, "Create Membership Failed");
+			return null;
+		}
 		
-		new UserHandler().insert(inputs);
 		Member member = insert(inputs);
 		JOptionPane.showMessageDialog(null, "Create Membership Success!!");
 		return member;

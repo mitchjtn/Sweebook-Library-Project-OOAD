@@ -20,7 +20,7 @@ public class Borrow {
     final String countBookString = "SELECT COUNT(*) AS 'total' " + 
     		"FROM borrow_items JOIN borrows " +
     		"ON borrow_items.borrow_id = borrows.id " + 
-    		"WHERE borrows.member_id = ? ";
+    		"WHERE borrows.member_id = ? AND borrow_items.return_timestamp IS NULL";
     final String isStillBorrowString =
     		"SELECT COUNT(*) AS 'total' " + 
     		"FROM borrow_items JOIN borrows " +
@@ -276,8 +276,6 @@ public class Borrow {
 				statement.setInt(2, year);
 				
 			}
-			System.out.println(month);
-			System.out.println(year);
 			ResultSet rs = statement.executeQuery(); 
 			
 			while(rs.next()) {

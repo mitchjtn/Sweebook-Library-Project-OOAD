@@ -102,7 +102,6 @@ public class ViewBorrowForm extends JInternalFrame implements ActionListener {
 		int size = borrowList.size();
 
 		bowDtm.setRowCount(size);
-		System.out.println("size " + size);
 		for (int i = 0; i < size; i++) {
 			String id = borrowList.get(i).getId();
 			String memberId = borrowList.get(i).getMemberId();

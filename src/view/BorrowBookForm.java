@@ -76,7 +76,6 @@ public class BorrowBookForm extends JInternalFrame implements ActionListener {
 		 showCartList();
 
 		 //button
-//		 close = new JButton("Close");
 		 borrow = new JButton("Borrow");
 		 addCart = new JButton("add to cart");
 		 removeCart = new JButton("remove from cart");

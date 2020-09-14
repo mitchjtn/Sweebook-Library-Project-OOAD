@@ -28,7 +28,11 @@ public class EmployeeHandler {
 		String userRole = User.getRoleId();
 		
 		//create user
-		new UserHandler().insert(inputs);
+		if(new UserHandler().insert(inputs) == null) {
+			JOptionPane.showMessageDialog(null, "Create User failed");
+			return null;
+		}
+		
 		
 		User.setId(userId);
 		User.setRoleId(userRole);

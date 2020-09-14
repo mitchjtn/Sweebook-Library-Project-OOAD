@@ -94,6 +94,7 @@ public class LogInView extends JFrame implements ActionListener {
 			
 			username = txtUsername.getText();
 			password = String.valueOf(txtPassword.getPassword());
+			//password = User.encryptPassword(password);
 			UserHandler userH = new UserHandler();
 			user = userH.getByUsername(username); 
 			

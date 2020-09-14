@@ -16,7 +16,7 @@ public class User {
 	private String password;
 	private String gender;
 	
-	final String insertString = "INSERT INTO users (id,role_id, name, username, password, gender) VALUES (?, ?, ?, ?, ?, ?);";
+	final String insertString = "INSERT INTO users (id,role_id, name, username, password, gender) VALUES (?, ?, ?, ?, SHA1(?), ?);";
 	final String findIdString = "SELECT * FROM users WHERE username=? ;";
 	
 	//constructor
@@ -100,6 +100,7 @@ public class User {
 	public User insert() {
 		Connection connection = Connect.connect();
 		PreparedStatement statement = null;
+		int inserted = 1;
 		try {
 			statement = connection.prepareStatement(insertString);
 			statement.setString(1, id);
@@ -109,8 +110,8 @@ public class User {
 			statement.setString(5, this.password);
 			statement.setString(6, this.gender);
 			
-			statement.executeUpdate();
-				
+			inserted = statement.executeUpdate();
+			
 		}catch (SQLException ex) {
 			ex.printStackTrace();
 		} finally {
@@ -120,7 +121,7 @@ public class User {
 				ex.printStackTrace();
 			}
 		}
-		
+		if(inserted == 0) return null;
 		return this;
 	}
 	
@@ -155,5 +156,32 @@ public class User {
 		}
 		
 		return user;
+	}
+	
+	public static String encryptPassword(String password) {
+		Connection connection = Connect.connect();
+		PreparedStatement statement = null;
+		String result = "";
+		String encryptString = "SELECT SHA1(?) AS 'password' ";
+		try {
+			statement = connection.prepareStatement(encryptString);
+			
+			statement.setString(1, password);
+			ResultSet rs = statement.executeQuery(); 
+			while(rs.next()) {
+				result = rs.getString(1);
+			}
+		}catch (SQLException ex) {
+			ex.printStackTrace();
+			return null;
+		} finally {
+			try {
+				statement.close();
+			} catch(SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+		return result;
 	}
 }

@@ -52,7 +52,6 @@ public class ManageGenreForm extends JInternalFrame implements ActionListener{
 		String[] genreName = {"Genre ID","Genre Type"};
 		tableModel = new DefaultTableModel(genreName, genreList.size());
 		table = new JTable(tableModel);
-//		sPane = new JScrollPane(tableModel);
 		showGenre();
 	   
 		close = new JButton("Back");
@@ -66,15 +65,16 @@ public class ManageGenreForm extends JInternalFrame implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				String type = JOptionPane.showInputDialog(null, "Insert Type");
 				if(type != null ) {
-					if( type.equals("") == false) {
+					if( type.equals("") == false && genreHandler.getByType(type) == null) {
+						
 						HashMap<String,String> inputs = new HashMap<String,String>();
 						inputs.put("type", type);
 						genreHandler.insert(inputs);
-						JOptionPane.showMessageDialog(null, "Insert Success!!");
+						JOptionPane.showMessageDialog(null, "Insert Genre Success!!");
 						refreshTable();				
 						
 					}else {
-						JOptionPane.showMessageDialog(null, "Insert Failed!!");						
+						JOptionPane.showMessageDialog(null, "Insert Genre Failed!!");						
 					}
 				}
 			}

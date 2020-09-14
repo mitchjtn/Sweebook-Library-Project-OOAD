@@ -32,7 +32,7 @@ public class AddEmployeeForm extends JDialog implements ActionListener {
 	
 	ManageEmployeeForm manEmpForm;
 	
-	JLabel title, lblRole, lblName, lblConfirm, lblUsername, lblPassword, lblGender, lblSalary;
+	JLabel title, lblRole, lblName, lblConfirm, lblConfirmP, lblUsername, lblPassword, lblGender, lblSalary;
 	
 	JComboBox<String> cbRole;
 	
@@ -79,10 +79,15 @@ public class AddEmployeeForm extends JDialog implements ActionListener {
 		lblPassword.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		getContentPane().add(lblPassword);
  
-		lblConfirm = new JLabel("Password :");
-		lblConfirm.setBounds(20, 245, 100, 15);
+		lblConfirm = new JLabel("Confirm");
+		lblConfirm.setBounds(20, 240, 100, 15);
 		lblConfirm.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		getContentPane().add(lblConfirm);
+		
+		lblConfirmP = new JLabel("Password :");
+		lblConfirmP.setBounds(20, 260, 100, 15);
+		lblConfirmP.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		getContentPane().add(lblConfirmP);
  
 		lblGender = new JLabel("Gender :");
 		lblGender.setBounds(20, 295, 100, 15);
@@ -182,7 +187,7 @@ public class AddEmployeeForm extends JDialog implements ActionListener {
 			//Password
 			
 			String password = new String(txtPassword.getPassword());
-			String confirm = new String(txtPassword.getPassword());
+			String confirm = new String(txtConfirm.getPassword());
 			
 			if(password.compareTo("") == 0 || confirm.compareTo("") == 0) {
 				JOptionPane.showMessageDialog(null, "Please input password!!");

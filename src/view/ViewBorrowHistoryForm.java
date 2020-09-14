@@ -91,9 +91,6 @@ public class ViewBorrowHistoryForm extends JInternalFrame implements ActionListe
 		now = LocalDate.now();
 		Date date = java.sql.Date.valueOf(now);
 		
-		System.out.println("tes");
-		System.out.println(date.toString());
-		System.out.println("tes2");
 		//IsMember?
 		
 		boolean isMember;
@@ -137,7 +134,7 @@ public class ViewBorrowHistoryForm extends JInternalFrame implements ActionListe
 	public void viewDetail() {
 		int index = bowTbl.getSelectedRow();
 		if(index == -1) {
-			new JOptionPane().showMessageDialog(null, "Please Choose 1 Transaction!");
+			JOptionPane.showMessageDialog(null, "Please Choose 1 Transaction!");
 			return;
 		}
 		

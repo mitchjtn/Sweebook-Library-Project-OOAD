@@ -157,6 +157,7 @@ public class CreateMembershipForm extends JFrame implements ActionListener{
 			inputs.put("password", pass);
 			member.createMembership(inputs);
 			
+			goBack();
 		}
 	}
 }

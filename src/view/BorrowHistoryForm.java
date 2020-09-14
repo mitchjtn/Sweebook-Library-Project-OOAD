@@ -87,7 +87,6 @@ public class BorrowHistoryForm extends JInternalFrame implements ActionListener 
 		Date newdate = java.sql.Date.valueOf(now);
 		int year = Integer.parseInt(new SimpleDateFormat("yyyy").format(newdate));
 		int month =Integer.parseInt(new SimpleDateFormat("MM").format(newdate));
-		System.out.println(month + " " + year);
 		date.setMonth(month);
 		date.setYear(year);
 		

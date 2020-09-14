@@ -77,18 +77,6 @@ public class ViewBookForm extends JInternalFrame {
 			dtm.setValueAt(isbn, i, 3);
 			dtm.setValueAt(qty, i, 4);
 			
-//			String id = "ID : " + "abc";
-//			String name = "Name : " + "bcd";
-//			String genreId = "Genre ID : " + "cde";
-//			String isbn = "ISBN : " + "def";
-//			int qty = 123;
-//			String quantity = "Qty : " + String.valueOf(qty);
-//			
-//			String[] data = {id, name, genreId, isbn, quantity};
-//			
-//			JList printBook = new JList(data);
-//			printBook.setBounds(10, 10, 100, 300);
-//			getContentPane().add(printBook);
 		}
 	}
 }

@@ -32,7 +32,7 @@ public class ManageBookForm extends JInternalFrame implements ActionListener{
 
 	 JScrollPane sPane, sPaneCart;
 	 JLabel title,titleCart;
-	 JButton close,restock, delete, viewGen;
+	 JButton restock, delete, viewGen;
 	 JPanel titlePnl,titlePnlCart;
 	 JSpinner spQuantity;
 	 
@@ -55,10 +55,10 @@ public class ManageBookForm extends JInternalFrame implements ActionListener{
 		 showBook(); 
 		 
 		 //button
-		 close = new JButton("Back");
+		 
 		 restock = new JButton("Restock Book");
 		 delete = new JButton("Delete Book");
-		 close.addActionListener(this);
+		 
 		 restock.addActionListener(this);
 		 delete.addActionListener(this);
 		 
@@ -126,7 +126,7 @@ public class ManageBookForm extends JInternalFrame implements ActionListener{
 		 });
 		 
 		 JPanel pnlButton = new JPanel(new FlowLayout());
-		 pnlButton.add(close);
+		 
 		 pnlButton.add(restock);
 		 pnlButton.add(delete);
 	  
@@ -163,9 +163,6 @@ public class ManageBookForm extends JInternalFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource() == close) {
-			setVisible(false);
-		}
 	 }
 
 }

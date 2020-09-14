@@ -24,7 +24,6 @@ public class MemberMainView extends JFrame implements ActionListener{
 	 BorrowHistoryForm borrowHisForm ;
 	 ViewBookForm viewBookForm ;
 	 ViewBorrowForm viewBorForm ;
-//	 ViewBorrowHistoryForm viewHistory = new ViewBorryHistoryForm();
   
 	 JDesktopPane viewer = new JDesktopPane();
 	 
@@ -35,7 +34,6 @@ public class MemberMainView extends JFrame implements ActionListener{
 	 ImageIcon image = new ImageIcon("aaa.png");
 	 
 	 public MemberMainView() {
-		System.out.println("Member Main View Running");
 		getContentPane().setLayout(null);
 		setTitle("Membership Main Menu");
 		setSize(600,400);

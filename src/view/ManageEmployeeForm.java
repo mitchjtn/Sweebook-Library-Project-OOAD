@@ -164,7 +164,7 @@ public class ManageEmployeeForm extends JInternalFrame implements ActionListener
 			return;
 		}
 		new EmployeeHandler().firedEmployee(employeeList.get(index).getId());
-		System.out.println("fired!!");
+		JOptionPane.showMessageDialog(null, "Employee Fired!");
 		
 		refreshEmployeeTable();
 	}
@@ -180,6 +180,7 @@ public class ManageEmployeeForm extends JInternalFrame implements ActionListener
 			return;
 		}
 		new EmployeeHandler().acceptEmployee(employeeList.get(index).getId());
+		JOptionPane.showMessageDialog(null, "Employee Accepted");
 		refreshEmployeeTable();
 	}
 
@@ -190,23 +191,10 @@ public class ManageEmployeeForm extends JInternalFrame implements ActionListener
 			addEmployee();
 		}
 		else if(e.getSource() == fireEmp) {
-			System.out.println("role" + User.getRoleId());
-			if(User.getRoleId().equals(new RoleHandler().getByName("Manager").getId()) == true) {
-				fireEmployee();
-			}
-			else {
-				JOptionPane.showMessageDialog(null, "You Cannot Do This Action!");
-				return;
-			}
+			fireEmployee();
 		}
 		else if(e.getSource() == accReq) {
-			if(User.getRoleId().equals(new RoleHandler().getByName("Manager").getId()) == true) {
-				acceptReqs();
-			}
-			else {
-				JOptionPane.showMessageDialog(null, "You Cannot Do This Action!");
-				return;
-			}
+			acceptReqs();
 		}
 	}
 }

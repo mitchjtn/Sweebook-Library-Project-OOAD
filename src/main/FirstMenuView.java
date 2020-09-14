@@ -33,8 +33,8 @@ public class FirstMenuView extends JFrame implements ActionListener {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);	  
 		  
-		lblTitle = new JLabel("Swee Library", JLabel.CENTER);
-		lblTitle.setFont(new Font("Times New Roman", Font.BOLD, 80));
+		lblTitle = new JLabel("SweeBook Library", JLabel.CENTER);
+		lblTitle.setFont(new Font("Times New Roman", Font.BOLD, 65));
 		lblTitle.setPreferredSize(new Dimension(200, 150));
 		 
 		btnLogIn = new JButton("Log In");

@@ -84,7 +84,6 @@ public class BorrowTransactionHandler {
 			diff -= 14;
 			fine = diff * 1000;
 		}
-		
 		return fine;
 	}
 }
